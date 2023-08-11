@@ -1,6 +1,6 @@
 let total = 0;
 let amount = 0;
-const words = ["adventure", "technology", "happiness", "internet", "javascript", "html", "mountain", "pool", "King", "Dreadlocks"];
+const words = ["adventure", "technology", "happiness", "internet", "javascript", "html", "mountain", "pool", "king", "dreadlocks"];
 let randomWord = words[Math.floor(Math.random() * words.length)];
 const wordDisplay = document.getElementById("word");
 const guessInput = document.getElementById("guessInput");
@@ -28,19 +28,22 @@ function updateWordDisplay() {
   wordDisplay.textContent = currentWord.map(letter => guessedLetters.includes(letter) ? letter : '_').join(' ');
 }
 
-function updateGuessesDisplay() {
-  console.log(guessedLetters);
-  guessesDisplay.textContent = `Used Letters: ${guessedLetters.join()}`;
+function checkWin(currentWord, guessedLetters) {
+  for (let i = 0; i < currentWord.length; i++) {
+    if (!guessedLetters.includes(currentWord[i])) {
+      return false;
+    }
+  }
+  return true;
 }
 
-function checkWin() {
-  if (!currentWord.includes('')) {
-    alert('Congratulations! You won!');
-    resetGame();
-  } else if (incorrectGuesses === 6) {
-    alert(`Game over! The word was "${randomWord}"`);
-    resetGame();
+function updateWordDisplay() {
+  wordDisplay.textContent = currentWord.map(letter => guessedLetters.includes(letter) ? letter : '_').join(' ');
+  if (checkWin(currentWord, guessedLetters)) {
+    wordDisplay.textContent = "You Win!";
+    submitBtn.disabled = true;
   }
+  updateGuessesDisplay();
 }
 
 function guess() {
