@@ -1,16 +1,19 @@
 let total = 0;
-const words = ["Adventure", "Technology", "Happiness", "Internet", "Javascript", "HTML", "Mountain", "Pool", "King", "Dreadlocks"];
+let amount = 0;
+const words = ["adventure", "technology", "happiness", "internet", "javascript", "html", "mountain", "pool", "King", "Dreadlocks"];
 let randomWord = words[Math.floor(Math.random() * words.length)];
 const wordDisplay = document.getElementById("word");
 const guessInput = document.getElementById("guessInput");
 const submitBtn = document.getElementById("submitLetter");
+const spinBtn = document.getElementById("onclick")
 const guessesDisplay = document.getElementById("guesses");
 let currentWord = randomWord.split('');
 let guessedLetters = [];
 let incorrectGuesses = 0;
 
+wordDisplay.textContent = currentWord.map(() => '_').join(' '); 
 
-wordDisplay.textContent = currentWord.map(() => '_').join(' ');
+submitBtn.disabled = true
 
 submitBtn.addEventListener("click", function() {
     const guess = guessInput.value;
@@ -25,15 +28,13 @@ function updateWordDisplay() {
   wordDisplay.textContent = currentWord.map(letter => guessedLetters.includes(letter) ? letter : '_').join(' ');
 }
 
-
-
 function updateGuessesDisplay() {
-    console.log(guessedLetters)
-  guessesDisplay.textContent = `Incorrect guesses: ${guessedLetters.join()}`;
+  console.log(guessedLetters);
+  guessesDisplay.textContent = `Used Letters: ${guessedLetters.join()}`;
 }
 
 function checkWin() {
-  if (!currentWord.includes('_')) {
+  if (!currentWord.includes('')) {
     alert('Congratulations! You won!');
     resetGame();
   } else if (incorrectGuesses === 6) {
@@ -49,15 +50,33 @@ function guess() {
     guessedLetters.push(letter);
     
     if (!currentWord.includes(letter)) {
-      incorrectGuesses++;
+      incorrectGuesses++; 
     }
-    console.log(guessedLetters)
+    console.log(guessedLetters);
+
+    let result = amount;
+  
+    if (randomWord.indexOf(guessInput.value) >-1) {
+      result = amount + total;
+    } else {
+      result = total - amount;
+    }
+    
+    total = result;
+
+    const totalElement = document.getElementById("total-display");
+    totalElement.textContent = `$${total}`;
+    
+
     updateWordDisplay();
     updateGuessesDisplay();
     
-     }
+  }
   
   guessInput.value = '';
+
+  submitBtn.disabled = true
+
 }
 
 function resetGame() {
@@ -70,11 +89,11 @@ function resetGame() {
 }
 
 function spin() {
-  const amount = Math.floor(Math.random() * 1000) + 10;
-  total += amount;
-  //if
+  amount = Math.floor(Math.random() * 100) + 10;
+  
   const resultElement = document.getElementById("amount-display");
   resultElement.textContent = `$${amount}`;
-  const totalElement = document.getElementById("total-display");
-  totalElement.textContent = `$${total}`;
+  
+  submitBtn.disabled = false
+
 }
