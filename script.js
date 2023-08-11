@@ -70,10 +70,13 @@ function guess() {
     const totalElement = document.getElementById("total-display");
     totalElement.textContent = `$${total}`;
     
-
-    updateWordDisplay();
-    updateGuessesDisplay();
-    
+    if (total < 0) {
+      alert("Letter is incorrect and You're Bankrupt! Sorry, You lose!");
+      resetGame();
+    } else {
+      updateWordDisplay();
+      updateGuessesDisplay();
+    }
   }
   
   guessInput.value = '';
@@ -81,6 +84,7 @@ function guess() {
   submitBtn.disabled = true
 
 }
+
 
 function resetGame() {
   randomWord = words[Math.floor(Math.random() * words.length)];
