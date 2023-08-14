@@ -13,7 +13,7 @@ body {
   }
   
   .container {
-    background-color: black;
+    background-color: whitesmoke;
     color: gold;
     padding: 20px;
     border-radius: 10px;
@@ -40,16 +40,3 @@ body {
     background-color: rgba(122, 109, 22, 0.8);
   }
   
-  .futuristic-text {
-    font-size: 24px;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-  }
-  
-  .futuristic-image {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 0 30px rgba(255, 223, 0, 0.8);
-  }
