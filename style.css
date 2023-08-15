@@ -4,7 +4,6 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 #d5, #d6 {
@@ -13,11 +12,11 @@ body {
   padding: 10px;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  width: 200px; /* Adjust the width as needed */
+  width: 200px; 
 }
 
 #d5 {
-  top: 90px; /* Adjust the top position as needed */
+  top: 90px; 
   left: 20px;
 }
 
@@ -32,15 +31,9 @@ body {
   color: #1fac36;
 }
 
-  .header {
-    background-color: black;
-    color: gold;
-    text-align: center;
-    padding: 20px;
-  }
-  
-  .container {
-    background-color: black;
+    
+.container {
+    background-color: rgb(191, 180, 25);
     color: gold;
     padding: 20px;
     border-radius: 10px;
@@ -53,32 +46,12 @@ body {
     
   }
   
-  .button {
-    background-color: gold;
-    color: black;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .button:hover {
-    background-color: rgba(122, 109, 22, 0.8);
-  }
-  
-  .futuristic-text {
-    font-size: 24px;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-  }
-  
-  .futuristic-image {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 0 30px rgba(255, 223, 0, 0.8);
-  }
+#spinning-wheel {
+  animation: spin 5s linear infinite; 
+}
 
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
 
